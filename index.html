@@ -141,12 +141,20 @@
               return;
             }
             try {
-                const expression = (firstnumber+Operator+current);
-                const result = eval(expression);
-                document.getElementById('screen').value = result;
-                Operator = '';
-                firstOperand = '';
-                current=" "
+                if(firstnumber=='1' && Operator=='/' && current=='0'){
+                    document.getElementById('screen').value = 'Not Defined';
+                }
+                else if(firstnumber=='0' && Operator=='/' && current=='0'){
+                    document.getElementById('screen').value = 'Indeterminate Form';
+                }
+                else{
+                    const expression = (firstnumber+Operator+current);
+                    const result = eval(expression);
+                    document.getElementById('screen').value = result;
+                    Operator = '';
+                    firstOperand = '';
+                    current=" "
+                }
             } catch {
                 document.getElementById('screen').value = 'Error';
             }
